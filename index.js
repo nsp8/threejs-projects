@@ -26,7 +26,10 @@ const material = new THREE.MeshBasicMaterial({
 const mesh = new THREE.Mesh(geo, material);
 scene.add(mesh);
 
-function animate() {
+const hemiLight = new THREE.HemisphereLight(0xffffff, 0x000000);
+scene.add(hemiLight);
+
+function animate(t = 0) {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 }

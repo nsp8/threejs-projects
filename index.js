@@ -19,14 +19,22 @@ camera.position.z = 2;
 // 3. Initializing the scene
 const scene = new THREE.Scene();
 
-const geo = new THREE.IcosahedronGeometry(1.0, 2);  // radius, detail
-const material = new THREE.MeshBasicMaterial({
-    color: 0xccff
+const geo = new THREE.IcosahedronGeometry(1.0, 3);  // radius, detail
+const material = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    flatShading: true
 });
 const mesh = new THREE.Mesh(geo, material);
 scene.add(mesh);
 
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x000000);
+const wireFrameMaterial = new THREE.MeshBasicMaterial({
+    color: 0xffffff,
+    wireframe: true
+});
+
+const wireMesh = new THREE.Mesh(geo, wireFrameMaterial);
+scene.add(wireMesh);
+const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x000000, 1 );
 scene.add(hemiLight);
 
 function animate(t = 0) {
